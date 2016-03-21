@@ -72,8 +72,13 @@ public class KPSKS extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rock Paper Scissors Lizard Spock");
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
-        result_panel.setBackground(new java.awt.Color(153, 255, 153));
+        result_panel.setBackground(new java.awt.Color(185, 255, 185));
 
         player.setFont(new java.awt.Font("Arial Rounded MT Bold", 3, 36)); // NOI18N
         player.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -171,11 +176,6 @@ public class KPSKS extends javax.swing.JFrame {
         paper.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paperActionPerformed(evt);
-            }
-        });
-        paper.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                paperKeyPressed(evt);
             }
         });
 
@@ -394,7 +394,6 @@ public class KPSKS extends javax.swing.JFrame {
     static int ties = 0;
     private ArrayList<Integer> player_history = new ArrayList<>();
     private ArrayList<Integer> computer_history = new ArrayList<>();
-    Color default1 = new Color(240,240,240);
     
     private void new_gameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_gameActionPerformed
         // TODO add your handling code here:
@@ -413,104 +412,58 @@ public class KPSKS extends javax.swing.JFrame {
     
     private void rockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rockActionPerformed
         // TODO add your handling code here:
-        int com_choice = algoritem.naslednjaPoteza();
-        algoritem.nasprotnikovaPoteza(0);
-        
-        player_history.add(0);
-        computer_history.add(com_choice);
-        
-        player_chosen.setText(choice_to_string(0));
-        computer_chosen.setText(choice_to_string(com_choice));
-        
-        int winner = who_wins(0, com_choice);
-        
-        popravi_score(winner);
-        
-        color_background(winner);
-        
-        show_computer_choice_icon (winner);
+        allActionPerformed(0);
     }//GEN-LAST:event_rockActionPerformed
 
     
     private void paperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paperActionPerformed
         // TODO add your handling code here:
-        int com_choice = algoritem.naslednjaPoteza();
-        player_history.add(1);
-        computer_history.add(com_choice);
-        
-        player_chosen.setText(choice_to_string(1));
-        computer_chosen.setText(choice_to_string(com_choice));
-        
-        int winner = who_wins(1, com_choice);
-        
-        popravi_score(winner);
-        
-        color_background(winner);
-        
-        show_computer_choice_icon (winner);
+        allActionPerformed(1);
     }//GEN-LAST:event_paperActionPerformed
 
     
     private void scissorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scissorsActionPerformed
         // TODO add your handling code here:
-        int com_choice = computer_choice_algorithm (player_history, computer_history);
-        player_history.add(2);
-        computer_history.add(com_choice);
-        
-        player_chosen.setText(choice_to_string(2));
-        computer_chosen.setText(choice_to_string(com_choice));
-        
-        int winner = who_wins(2, com_choice);
-        
-        popravi_score(winner);
-        
-        color_background(winner);
-        
-        show_computer_choice_icon (winner);
+        allActionPerformed(2);
     }//GEN-LAST:event_scissorsActionPerformed
 
     
     private void lizardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lizardActionPerformed
         // TODO add your handling code here:
-        int com_choice = computer_choice_algorithm (player_history, computer_history);
-        player_history.add(3);
-        computer_history.add(com_choice);
-        
-        player_chosen.setText(choice_to_string(3));
-        computer_chosen.setText(choice_to_string(com_choice));
-        
-        int winner = who_wins(3, com_choice);
-        
-        popravi_score(winner);
-        
-        color_background(winner);
-        
-        show_computer_choice_icon (winner);
+        allActionPerformed(3);
     }//GEN-LAST:event_lizardActionPerformed
 
     
     private void spockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spockActionPerformed
         // TODO add your handling code here:
-        int com_choice = computer_choice_algorithm (player_history, computer_history);
-        player_history.add(4);
+        allActionPerformed(4);
+    }//GEN-LAST:event_spockActionPerformed
+
+    private void allActionPerformed (int score) {
+        int com_choice = algoritem.naslednjaPoteza();
+        algoritem.nasprotnikovaPoteza(0);
+        
+        player_history.add(score);
         computer_history.add(com_choice);
         
-        player_chosen.setText(choice_to_string(4));
+        player_chosen.setText(choice_to_string(score));
         computer_chosen.setText(choice_to_string(com_choice));
         
-        int winner = who_wins(4, com_choice);
+        int winner = who_wins(score, com_choice);
         
         popravi_score(winner);
         
         color_background(winner);
         
-        show_computer_choice_icon (winner);
-    }//GEN-LAST:event_spockActionPerformed
-
+        show_computer_choice_icon (com_choice);
+    }
+    
+    
+    
     private void rockMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rockMouseEntered
         // TODO add your handling code here:
         rock.setBorderPainted(true);
-        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.green, 2, true);
+        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.black, 2, true);
         rock.setBorder(b);
     }//GEN-LAST:event_rockMouseEntered
 
@@ -522,7 +475,7 @@ public class KPSKS extends javax.swing.JFrame {
     private void paperMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paperMouseEntered
         // TODO add your handling code here:
         paper.setBorderPainted(true);
-        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.green, 2, true);
+        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.black, 2, true);
         paper.setBorder(b);
     }//GEN-LAST:event_paperMouseEntered
 
@@ -534,7 +487,7 @@ public class KPSKS extends javax.swing.JFrame {
     private void scissorsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scissorsMouseEntered
         // TODO add your handling code here:
         scissors.setBorderPainted(true);
-        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.green, 2, true);
+        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.black, 2, true);
         scissors.setBorder(b);
     }//GEN-LAST:event_scissorsMouseEntered
 
@@ -546,7 +499,7 @@ public class KPSKS extends javax.swing.JFrame {
     private void lizardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lizardMouseEntered
         // TODO add your handling code here:
         lizard.setBorderPainted(true);
-        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.green, 2, true);
+        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.black, 2, true);
         lizard.setBorder(b);
     }//GEN-LAST:event_lizardMouseEntered
 
@@ -558,7 +511,7 @@ public class KPSKS extends javax.swing.JFrame {
     private void spockMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spockMouseEntered
         // TODO add your handling code here:
         spock.setBorderPainted(true);
-        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.green, 2, true);
+        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.black, 2, true);
         spock.setBorder(b);
     }//GEN-LAST:event_spockMouseEntered
 
@@ -567,25 +520,27 @@ public class KPSKS extends javax.swing.JFrame {
         spock.setBorderPainted(false);
     }//GEN-LAST:event_spockMouseExited
 
-    private void paperKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_paperKeyPressed
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
         
-        // NE DELA //
+        // NE VEM ZAKAJ NE DELA
         
-        if (evt.getKeyCode() == KeyEvent.VK_P) {
-            int com_choice = computer_choice_algorithm (player_history, computer_history);
-            player_history.add(1);
-            computer_history.add(com_choice);
-
-            player_chosen.setText(choice_to_string(1));
-            computer_chosen.setText(choice_to_string(com_choice));
-
-            int winner = who_wins(1, com_choice);
-
-            popravi_score(winner);
-
-            color_background(winner);
-        } 
-    }//GEN-LAST:event_paperKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_R) {
+            allActionPerformed(0);
+        }
+        else if (evt.getKeyCode() == KeyEvent.VK_P) {
+            allActionPerformed(1);
+        }
+        else if (evt.getKeyCode() == KeyEvent.VK_S) {
+            allActionPerformed(2);
+        }
+        else if (evt.getKeyCode() == KeyEvent.VK_L) {
+            allActionPerformed(3);
+        }
+        else if (evt.getKeyCode() == KeyEvent.VK_K) {       // spock ima K, da ni isto kot scissors
+            allActionPerformed(4);
+        }
+    }//GEN-LAST:event_formKeyPressed
 
     
     private String choice_to_string (int choice) {
@@ -640,9 +595,7 @@ public class KPSKS extends javax.swing.JFrame {
     
     private void show_computer_choice_icon (int score) {  
         
-        // NE DELA //
-        
-        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.green, 3, true);
+        javax.swing.border.Border b = BorderFactory.createLineBorder(Color.black, 5, true);
         
         if (score == 0) {
             rock1.setBorderPainted(true);
@@ -665,39 +618,48 @@ public class KPSKS extends javax.swing.JFrame {
             spock1.setBorder(b);
         }
         
-        
-        rock1.setBorderPainted(false);
-        paper1.setBorderPainted(false);
-        scissors1.setBorderPainted(false);
-        lizard1.setBorderPainted(false);
-        spock1.setBorderPainted(false);
+        new java.util.Timer().schedule( 
+            new java.util.TimerTask() {
+                @Override
+                public void run() {
+                    rock1.setBorderPainted(false);
+                    paper1.setBorderPainted(false);
+                    scissors1.setBorderPainted(false);
+                    lizard1.setBorderPainted(false);
+                    spock1.setBorderPainted(false);
+                }
+            }, 
+            1000 
+        );
         
     }
     
     
     private void color_background (int score) {
+        Color before = player_panel.getBackground();
         
-        // NE DELA //
-        
-        if (score == 1) {
-            player_panel.setBackground(Color.GREEN);
-            computer_panel.setBackground(Color.RED);
+        if (score == 1) { 
+            player_panel.setBackground(new Color(185,255,185));
+            computer_panel.setBackground(new Color(250,70,70));
         }
         else if (score == -1) {            
-            player_panel.setBackground(Color.RED);
-            computer_panel.setBackground(Color.GREEN);
-            
+            player_panel.setBackground(new Color(250,70,70));
+            computer_panel.setBackground(new Color(185,255,185));
         }
-        
+        else {
+            player_panel.setBackground(new Color(250,250,100));
+            computer_panel.setBackground(new Color(250,250,100));
+        }
+       
         new java.util.Timer().schedule( 
-        new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-                        player_panel.setBackground(default1);
-                        computer_panel.setBackground(default1);
-                    }
-                }, 
-                1000 
+            new java.util.TimerTask() {
+                @Override
+                public void run() {
+                    player_panel.setBackground(before);
+                    computer_panel.setBackground(before);
+                }
+            }, 
+            1000 
         );
         
     }
