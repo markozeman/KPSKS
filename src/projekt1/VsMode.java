@@ -5,7 +5,7 @@ package projekt1;
  */
 
 // Primerjava različnih algoritmov
-public class AlgoritemVs {
+public class VsMode {
     static final int[][] matrika =
             { {0, 1, -1, -1, 1},
                     {-1, 0, 1, 1, -1},
@@ -22,10 +22,7 @@ public class AlgoritemVs {
                 PredictiveAlgoritem.UTEZITEV_LINEARNO,
                 PredictiveAlgoritem.IZBIRANJE_PAMETNO, false);
 
-        a2 = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_POTEZE_OBEH, 5,
-                PredictiveAlgoritem.UTEZITEV_EKSPONENTNO,
-                PredictiveAlgoritem.UTEZITEV_LINEARNO,
-                PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        a2 = new AlgoritemPrehodaStanj();
 
 
         simulateGame(1000);

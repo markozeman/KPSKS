@@ -62,7 +62,7 @@ public class AlgoritemPrehodaStanj implements Algoritem {
     
     public AlgoritemPrehodaStanj() {
         rnd = new Random();
-        izbraniPrehodi = prehodi2;
+        izbraniPrehodi = prehodi5;
     }
     
     @Override
