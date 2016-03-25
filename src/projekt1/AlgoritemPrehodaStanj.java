@@ -59,10 +59,18 @@ public class AlgoritemPrehodaStanj implements Algoritem {
         { 0.2, 0.2, 0.2, 0.2, 0.2 },
         { 0.2, 0.2, 0.2, 0.2, 0.2 }
     };
+
+    private double[][] prehodi6 = {
+            { 0.5, 0.5, 0, 0, 0 },
+            { 0, 0, 0, 0.5, 0.5 },
+            { 0, 0.5, 0, 0, 0.5 },
+            { 0.5, 0, 0, 0.5, 0 },
+            { 0.5, 0.5, 0, 0, 0 }
+    };
     
     public AlgoritemPrehodaStanj() {
         rnd = new Random();
-        izbraniPrehodi = prehodi5;
+        izbraniPrehodi = prehodi6;
     }
     
     @Override
