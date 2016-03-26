@@ -14,6 +14,8 @@ import java.util.Random;
 import javafx.scene.layout.Border;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
 
 /**
@@ -68,10 +70,13 @@ public class KPSKS extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
         new_game = new javax.swing.JMenuItem();
+        statistics = new javax.swing.JMenuItem();
         exit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rock Paper Scissors Lizard Spock");
+        setLocation(new java.awt.Point(0, 0));
+        setLocationByPlatform(true);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -349,6 +354,15 @@ public class KPSKS extends javax.swing.JFrame {
         });
         file.add(new_game);
 
+        statistics.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        statistics.setText("Statistics");
+        statistics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statisticsActionPerformed(evt);
+            }
+        });
+        file.add(statistics);
+
         exit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         exit.setText("Exit");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -392,8 +406,11 @@ public class KPSKS extends javax.swing.JFrame {
 
     
     static int ties = 0;
-    private ArrayList<Integer> player_history = new ArrayList<>();
-    private ArrayList<Integer> computer_history = new ArrayList<>();
+    static int win = 0;
+    static int lost = 0;
+    public static ArrayList<Integer> player_history = new ArrayList<>();
+    public static ArrayList<Integer> computer_history = new ArrayList<>();
+    public static ArrayList<Integer> scores = new ArrayList<>();
     
     private void new_gameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_gameActionPerformed
         // TODO add your handling code here:
@@ -402,6 +419,11 @@ public class KPSKS extends javax.swing.JFrame {
         computer_chosen.setText("");
         player_chosen.setText("");
         ties = 0;
+        win = 0;
+        lost = 0;
+        player_history.clear();
+        computer_history.clear();
+        scores.clear();
     }//GEN-LAST:event_new_gameActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -525,6 +547,7 @@ public class KPSKS extends javax.swing.JFrame {
         
         // NE VEM ZAKAJ NE DELA
         
+               
         if (evt.getKeyCode() == KeyEvent.VK_R) {
             allActionPerformed(0);
         }
@@ -541,6 +564,12 @@ public class KPSKS extends javax.swing.JFrame {
             allActionPerformed(4);
         }
     }//GEN-LAST:event_formKeyPressed
+
+    private void statisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsActionPerformed
+        // TODO add your handling code here:
+        Statistics s = new Statistics();
+        s.setVisible(true);
+    }//GEN-LAST:event_statisticsActionPerformed
 
     
     private String choice_to_string (int choice) {
@@ -581,14 +610,19 @@ public class KPSKS extends javax.swing.JFrame {
             int p_score = Integer.parseInt(player_score.getText());
             p_score++;
             player_score.setText(Integer.toString(p_score));
+            win++;
+            scores.add(1);
         }
         else if (score == -1) {
             int c_score = Integer.parseInt(computer_score.getText());
             c_score++;
             computer_score.setText(Integer.toString(c_score));
+            lost++;
+            scores.add(-1);
         }
         else {
             ties++;
+            scores.add(0);
         }
     }
     
@@ -665,9 +699,6 @@ public class KPSKS extends javax.swing.JFrame {
     }
     
     
-    // statistika (ties, graf?)
-    
-    
     private int computer_choice_algorithm (ArrayList<Integer> player_history, ArrayList<Integer> computer_history) {    
         // vrne izbiro racunalnika (od 0 do 4)
         
@@ -740,5 +771,6 @@ public class KPSKS extends javax.swing.JFrame {
     private javax.swing.JButton scissors1;
     private javax.swing.JButton spock;
     private javax.swing.JButton spock1;
+    private javax.swing.JMenuItem statistics;
     // End of variables declaration//GEN-END:variables
 }
