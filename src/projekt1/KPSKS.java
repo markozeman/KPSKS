@@ -11,7 +11,6 @@ import java.awt.event.KeyEvent;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
-import javafx.scene.layout.Border;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -31,7 +30,19 @@ public class KPSKS extends javax.swing.JFrame {
      */
     public KPSKS() {
         initComponents();
-        algoritem = new RandomAlgoritem();
+        
+        // Kontrolni poskus
+        algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_NEOBTEZENO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        
+        
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5, PredictiveAlgoritem.UTEZITEV_EKSPONENTNO, PredictiveAlgoritem.UTEZITEV_NEOBTEZENO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 20, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_NEOBTEZENO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_EKSPONENTNO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_NEOBTEZENO, PredictiveAlgoritem.IZBIRANJE_PAMETNO, false);
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_POTEZE_OBEH, 5, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_NEOBTEZENO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+       
+        //algoritem = new PredictiveAlgoritem();
     }
 
     /**
@@ -139,7 +150,7 @@ public class KPSKS extends javax.swing.JFrame {
                 .addGap(504, 504, 504))
         );
 
-        rock.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marko\\Desktop\\FRI\\2. letnik - 2. semester\\MM\\projekt 1\\KPSKS\\rock.jpg")); // NOI18N
+        rock.setIcon(new javax.swing.ImageIcon("rock.jpg")); // NOI18N
         rock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 rockMouseEntered(evt);
@@ -154,7 +165,7 @@ public class KPSKS extends javax.swing.JFrame {
             }
         });
 
-        spock.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marko\\Desktop\\FRI\\2. letnik - 2. semester\\MM\\projekt 1\\KPSKS\\spock.jpg")); // NOI18N
+        spock.setIcon(new javax.swing.ImageIcon("spock.jpg")); // NOI18N
         spock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 spockMouseEntered(evt);
@@ -169,7 +180,7 @@ public class KPSKS extends javax.swing.JFrame {
             }
         });
 
-        paper.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marko\\Desktop\\FRI\\2. letnik - 2. semester\\MM\\projekt 1\\KPSKS\\paper.jpg")); // NOI18N
+        paper.setIcon(new javax.swing.ImageIcon("paper.jpg")); // NOI18N
         paper.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 paperMouseEntered(evt);
@@ -184,7 +195,7 @@ public class KPSKS extends javax.swing.JFrame {
             }
         });
 
-        lizard.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marko\\Desktop\\FRI\\2. letnik - 2. semester\\MM\\projekt 1\\KPSKS\\lizard.jpg")); // NOI18N
+        lizard.setIcon(new javax.swing.ImageIcon("lizard.jpg")); // NOI18N
         lizard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lizardMouseEntered(evt);
@@ -199,7 +210,7 @@ public class KPSKS extends javax.swing.JFrame {
             }
         });
 
-        scissors.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marko\\Desktop\\FRI\\2. letnik - 2. semester\\MM\\projekt 1\\KPSKS\\scissors.jpg")); // NOI18N
+        scissors.setIcon(new javax.swing.ImageIcon("scissors.jpg")); // NOI18N
         scissors.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 scissorsMouseEntered(evt);
@@ -282,15 +293,15 @@ public class KPSKS extends javax.swing.JFrame {
 
         computer_chosen.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
-        rock1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marko\\Desktop\\FRI\\2. letnik - 2. semester\\MM\\projekt 1\\KPSKS\\rock.jpg")); // NOI18N
+        rock1.setIcon(new javax.swing.ImageIcon("rock.jpg")); // NOI18N
 
-        spock1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marko\\Desktop\\FRI\\2. letnik - 2. semester\\MM\\projekt 1\\KPSKS\\spock.jpg")); // NOI18N
+        spock1.setIcon(new javax.swing.ImageIcon("spock.jpg")); // NOI18N
 
-        lizard1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marko\\Desktop\\FRI\\2. letnik - 2. semester\\MM\\projekt 1\\KPSKS\\lizard.jpg")); // NOI18N
+        lizard1.setIcon(new javax.swing.ImageIcon("lizard.jpg")); // NOI18N
 
-        scissors1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marko\\Desktop\\FRI\\2. letnik - 2. semester\\MM\\projekt 1\\KPSKS\\scissors.jpg")); // NOI18N
+        scissors1.setIcon(new javax.swing.ImageIcon("scissors.jpg")); // NOI18N
 
-        paper1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Marko\\Desktop\\FRI\\2. letnik - 2. semester\\MM\\projekt 1\\KPSKS\\paper.jpg")); // NOI18N
+        paper1.setIcon(new javax.swing.ImageIcon("paper.jpg")); // NOI18N
 
         javax.swing.GroupLayout computer_panelLayout = new javax.swing.GroupLayout(computer_panel);
         computer_panel.setLayout(computer_panelLayout);
@@ -463,7 +474,7 @@ public class KPSKS extends javax.swing.JFrame {
 
     private void allActionPerformed (int score) {
         int com_choice = algoritem.naslednjaPoteza();
-        algoritem.nasprotnikovaPoteza(0);
+        algoritem.nasprotnikovaPoteza(score);
         
         player_history.add(score);
         computer_history.add(com_choice);
@@ -670,7 +681,7 @@ public class KPSKS extends javax.swing.JFrame {
     
     
     private void color_background (int score) {
-        Color before = player_panel.getBackground();
+        final Color before = player_panel.getBackground();
         
         if (score == 1) { 
             player_panel.setBackground(new Color(185,255,185));
