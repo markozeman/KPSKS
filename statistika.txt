@@ -1,0 +1,45 @@
+
+
+Games played: 6
+Wins: 3
+Ties: 2
+Lost: 1
+
+Player choices:
+4 2 0 1 4 2 
+
+Computer choices:
+4 1 1 4 2 2 
+
+Games played: 6
+Wins: 0
+Ties: 2
+Lost: 4
+
+Player choices:
+0 4 2 1 3 4 
+
+Computer choices:
+4 1 2 2 3 1 
+
+Games played: 6
+Wins: 3
+Ties: 1
+Lost: 2
+
+Player choices:
+0 1 4 2 3 1 
+
+Computer choices:
+2 1 0 3 2 3 
+
+Games played: 6
+Wins: 2
+Ties: 2
+Lost: 2
+
+Player choices:
+0 1 3 2 4 1 
+
+Computer choices:
+3 3 3 2 3 4 

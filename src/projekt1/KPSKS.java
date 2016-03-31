@@ -8,9 +8,15 @@ package projekt1;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.layout.Border;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -412,6 +418,7 @@ public class KPSKS extends javax.swing.JFrame {
     public static ArrayList<Integer> computer_history = new ArrayList<>();
     public static ArrayList<Integer> scores = new ArrayList<>();
     
+    
     private void new_gameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_gameActionPerformed
         // TODO add your handling code here:
         computer_score.setText("0");
@@ -478,6 +485,8 @@ public class KPSKS extends javax.swing.JFrame {
         color_background(winner);
         
         show_computer_choice_icon (com_choice);
+        
+        izpisi_v_datoteko();
     }
     
     
@@ -663,14 +672,15 @@ public class KPSKS extends javax.swing.JFrame {
                     spock1.setBorderPainted(false);
                 }
             }, 
-            1000 
+            700 
         );
         
     }
     
+    Color def = new Color(240,240,240);
     
     private void color_background (int score) {
-        Color before = player_panel.getBackground();
+      //  Color before = player_panel.getBackground();
         
         if (score == 1) { 
             player_panel.setBackground(new Color(185,255,185));
@@ -689,13 +699,51 @@ public class KPSKS extends javax.swing.JFrame {
             new java.util.TimerTask() {
                 @Override
                 public void run() {
-                    player_panel.setBackground(before);
-                    computer_panel.setBackground(before);
+                    player_panel.setBackground(def);
+                    computer_panel.setBackground(def);
                 }
             }, 
-            1000 
+            700 
         );
         
+    }
+    
+    
+    public void izpisi_v_datoteko() {
+        if (ties+win+lost > 99) {
+            try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("statistika.txt", true)))) {
+                out.write("\r\n\r\nGames played: " + (win+ties+lost) + "\r\n");
+                out.write("Wins: " + win + "\r\n");
+                out.write("Ties: " + ties + "\r\n");
+                out.write("Lost: " + lost + "\r\n");
+                
+                out.write("\r\nPlayer choices:\r\n");
+                for (int i=0; i<player_history.size(); i++) {
+                    out.write(player_history.get(i) + " ");
+                }
+                
+                out.write("\r\n\r\nComputer choices:\r\n");
+                for (int i=0; i<computer_history.size(); i++) {
+                    out.write(computer_history.get(i) + " ");
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(KPSKS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("rezultati.txt", true)))) {
+                for (int i=0; i<player_history.size(); i++) {
+                    out.write(player_history.get(i) + " ");
+                }
+                out.write("\r\n");
+                
+                new_gameActionPerformed(new ActionEvent(new Object(), 0, null));
+                
+            } catch (IOException ex) {
+                Logger.getLogger(KPSKS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
     
