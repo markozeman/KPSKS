@@ -20,7 +20,7 @@ public class VsMode {
         a1 = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_POTEZE_OBEH, 5,
                 PredictiveAlgoritem.UTEZITEV_EKSPONENTNO,
                 PredictiveAlgoritem.UTEZITEV_LINEARNO,
-                PredictiveAlgoritem.IZBIRANJE_PAMETNO, false);
+                PredictiveAlgoritem.IZBIRANJE_PAMETNO, true);
 
         a2 = new AlgoritemPrehodaStanj();
 

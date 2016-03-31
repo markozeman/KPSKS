@@ -70,7 +70,7 @@ public class AlgoritemPrehodaStanj implements Algoritem {
     
     public AlgoritemPrehodaStanj() {
         rnd = new Random();
-        izbraniPrehodi = prehodi6;
+        izbraniPrehodi = prehodi5;
     }
     
     @Override

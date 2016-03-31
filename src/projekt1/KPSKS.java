@@ -28,7 +28,19 @@ public class KPSKS extends javax.swing.JFrame {
      */
     public KPSKS() {
         initComponents();
-        algoritem = new PredictiveAlgoritem();
+        
+        // Kontrolni poskus
+        algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_NEOBTEZENO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        
+        
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5, PredictiveAlgoritem.UTEZITEV_EKSPONENTNO, PredictiveAlgoritem.UTEZITEV_NEOBTEZENO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 20, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_NEOBTEZENO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_EKSPONENTNO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_NEOBTEZENO, PredictiveAlgoritem.IZBIRANJE_PAMETNO, false);
+        //algoritem = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_POTEZE_OBEH, 5, PredictiveAlgoritem.UTEZITEV_LINEARNO, PredictiveAlgoritem.UTEZITEV_NEOBTEZENO, PredictiveAlgoritem.IZBIRANJE_RANDOM, false);
+       
+        //algoritem = new PredictiveAlgoritem();
     }
 
     /**
