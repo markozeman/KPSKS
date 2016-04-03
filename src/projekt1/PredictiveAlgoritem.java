@@ -1,5 +1,7 @@
 package projekt1;
 
+import java.util.Arrays;
+
 /**
  * Created by Lojze on 25.3.2016.
  */
@@ -115,6 +117,10 @@ public class PredictiveAlgoritem implements Algoritem {
     public void ponastavi() {
         oponnentHistory = "";
         totalHistory = "";
+
+        System.out.println(Arrays.toString(nacinT));
+        System.out.println(Arrays.toString(utezitevDolzineT));
+        System.out.println(Arrays.toString(utezitevStarostiT));
     }
 
     long[] izracunajVerjetnosti(){
@@ -194,13 +200,13 @@ public class PredictiveAlgoritem implements Algoritem {
 
     void updateSmartTables(int zmaga){
         nacinT[nacin] = ClampOcena((int)nacinT[nacin]+zmaga);
-        //utezitevDolzineT[utezitevDolzine] += zmaga;
-        //utezitevStarostiT[utezitevStarosti] += zmaga;
+        utezitevDolzineT[utezitevDolzine] = ClampOcena((int)utezitevDolzineT[nacin]+zmaga);
+        utezitevStarostiT[utezitevStarosti] = ClampOcena((int)utezitevStarostiT[nacin]+zmaga);
         /*izbiranjeT[izbiranje] += zmaga;*/
 
         nacin = indexOfMax(nacinT);
-        //utezitevDolzine = indexOfMax(utezitevDolzineT);
-        //utezitevStarosti = indexOfMax(utezitevStarostiT);
+        utezitevDolzine = indexOfMax(utezitevDolzineT);
+        utezitevStarosti = indexOfMax(utezitevStarostiT);
         //System.out.println(Arrays.toString(nacinT));
         /*utezitevDolzine = indexOfMax(utezitevDolzineT);
         utezitevStarosti = indexOfMax(utezitevStarostiT);

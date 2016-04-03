@@ -17,15 +17,17 @@ public class VsMode {
     static Algoritem a2;
 
     public static void main(String[] args){
-        a1 = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_POTEZE_OBEH, 5,
+        a1 = new PredictiveAlgoritem(PredictiveAlgoritem.NACIN_NASPROTNIKOVE_POTEZE, 5,
                 PredictiveAlgoritem.UTEZITEV_EKSPONENTNO,
                 PredictiveAlgoritem.UTEZITEV_LINEARNO,
-                PredictiveAlgoritem.IZBIRANJE_PAMETNO, true);
+                PredictiveAlgoritem.IZBIRANJE_PAMETNO, false);
 
-        a2 = new AlgoritemPrehodaStanj();
+        a2 = new HumanAlgoritem();
 
 
         simulateGame(1000);
+
+        a1.ponastavi();;
     }
 
     static void simulateGame(int len){
