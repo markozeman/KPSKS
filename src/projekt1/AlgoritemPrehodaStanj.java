@@ -68,6 +68,14 @@ public class AlgoritemPrehodaStanj implements Algoritem {
             { 0.5, 0.5, 0, 0, 0 }
     };
     
+    private double[][] human = {
+        { 0.215, 0.269, 0.160, 0.160, 0.195 },
+        { 0.259, 0.179, 0.211, 0.176, 0.175 },
+        { 0.220, 0.218, 0.182, 0.222, 0.159 },
+        { 0.232, 0.182, 0.192, 0.182, 0.207 },
+        { 0.216, 0.213, 0.177, 0.197, 0.197 }
+    };
+    
     public AlgoritemPrehodaStanj() {
         rnd = new Random();
         izbraniPrehodi = prehodi5;
